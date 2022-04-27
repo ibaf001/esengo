@@ -1,9 +1,13 @@
 node {
     stage('SCM') {
         echo 'Gathering code from version controll...'
+        git branch: '${branch}', url: 'https://github.com/ibaf001/esengo.git'
     }
     stage('Build') {
         echo 'Building...'
+        sh 'donet --version'
+        sh 'dotnet build ConsoleApp1'
+        echo 'build new feature'
     }
     stage('Test') {
         echo 'Testing...'
